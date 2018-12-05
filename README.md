@@ -21,7 +21,7 @@ import numpy as np
 
 
 
-#Parte I: Fundamentos de TensorFlow
+# Parte I: Fundamentos de TensorFlow
 
 ## TensorFlow Básico
 
@@ -358,7 +358,7 @@ print('shape_after = ',get_shape(b))
 ]
 ```
 
-##Escopos e quando utilizá-los
+## Escopos e quando utilizá-los
 
 Variáveis e tensores em TensorFlow tem o atributo nome que é usado para
 identificá-los no gráfico simbólico.
@@ -788,7 +788,7 @@ dados. Após utiliza-se a função `Dataset.map` para fazer o pré-processamento
 registros brutos e converter os dados a um formato utilizável pelo modelo. Por
 fim cria-se os *batches* de amostras chamando `Dataset.batch`.
 
-##Tire vantagens da sobrecarga de operadores
+## Tire vantagens da sobrecarga de operadores
 
 Assim como NumPy, TensorFlow
 sobrecarrega um número de operadores Python para facilitar a construção de
@@ -891,7 +891,7 @@ suportadas é a de igual(==) e de diferente(!=), operadores que são permitidos 
 NumPy porém não em TensorFlow. Utilize a versão do TensorFlow que são `tf.equal`
 e `tf.not_equal`.
 
-##Entendendo a ordem de execução e controle de dependências
+## Entendendo a ordem de execução e controle de dependências
 
 Como discutido no primeiro item, TensorFlow não roda imediatamente operações que
 são definidas, mas cria nós correspondentes em um grafo que pode ser avaliado
@@ -1139,7 +1139,7 @@ construir Redes neurais recorrentes complexas. Como exercício tente implementar
 [*beam search*](https://en.wikipedia.org/wiki/Beam_search) usando
 `tf.while_loop`. Você pode fazê-lo mais eficientemente com vetores de tensor?
 
-##Prototipando kernels e visualizações avançadas com operações Python
+## Prototipando kernels e visualizações avançadas com operações Python
 
 Operações
 de kernel em TensorFlow são escritos inteiramente em C++ pela sua eficiência.
@@ -1261,7 +1261,7 @@ Nopte que uma vez que o sumário são somente avaliados de vez em quando (não a
 cada passo), essa implementação pode ser usada em pretica sem se preocupar com a
 eficiência.
 
-##Processamento com Multi-GPU e paralelismo de dados
+## Processamento com Multi-GPU e paralelismo de dados
 
 Caso você esteja
 escrevendo um _software_ em uma linguagem como C++ para um computador com um só
@@ -1399,7 +1399,7 @@ A unica coisa que precisamos para mudar para paralelizar o _backpropagation_ de
 gradientes é colocar a flag `colocate_gradients_with_ops` como verdadeiro. Para
 assegurar que a operação de gradiente rode na mesma GPU que a operação original.
 
-##Debugando modelos TensorFlow
+## Debugando modelos TensorFlow
 
 A natureza simbólica do TensorFlow o torna
 relativamente mais difícil de debugar em comparação com código python regular.
@@ -1438,7 +1438,7 @@ b = tf.constant([1., 2.])
 c = a + b  # c is a tensor of shape [2, 2]
 ```
 
-###Validando seus tensores com operações `tf.assert*`
+### Validando seus tensores com operações `tf.assert*`
 
 Uma maneira de reduzir as chances de comportamento indesejado é verificar
 explicitamente o rank ou dimensão de tensores intermediários com operações
@@ -1468,7 +1468,7 @@ check_pos = tf.assert_positive(a)
 Veja os documentos oficiais para [lista completa de operações de
 afirmação](https://github.com/tensorflow/docs/tree/master/site/en/api_guides/python).
 
-###Registrando valores de tensores com `tf.Print`
+### Registrando valores de tensores com `tf.Print`
 
 Outra função inerente útil para debugar é `tf.Print` que registra os tensores
 dados para o erro padrão:
@@ -1491,7 +1491,7 @@ c = a + b
 
 Alternativamente podemos manualmente definir o controle de dependência.
 
-###Checando o gradiente com `tf.compute_gradient_error`
+### Checando o gradiente com `tf.compute_gradient_error`
 
 Nem todas as operações
 de TensorFlow vêm com gradientes, e é facil construir graphs (não
@@ -1589,7 +1589,7 @@ Debugger)](https://github.com/tensorflow/docs/tree/master/site/en/api_guides/pyt
 são outras ferramentas que podem ser utilizadas para debugar. Por favor vá aos
 documentos oficiais para aprender mais.
 
-##Estabilidade numérica em TensorFlow
+## Estabilidade numérica em TensorFlow
 
 Ao utilizar qualquer módulo de computação
 numérica como NumPy ou TensorFlow, é importante atentar-se que escrever o código
@@ -1745,7 +1745,7 @@ camada estão dentro do intervalo de estabilidade. Funções exponencial e
 logarítimo quando utilizadas ingenuamente são especialmente problemáticas porque
 podem variar de valores muito pequenos a valores muito grandes rapidamente.
 
-##Construindo um framework de treinamento de rede neural com API _learn_
+## Construindo um framework de treinamento de rede neural com API _learn_
 
 Por
 simplicidade, na maioria dos exemplos aqui executados nós criamos sessões
@@ -1911,12 +1911,12 @@ com o API _learn_ de TensorFlow. Recomendo analisar o [código
 fonte](https://github.com/vahidk/TensorFlowFramework) do framework e visitar o
 API python oficial para aprender mais sobre o API _learn_.
 
-#Parte II: Cookbook
+# Parte II: Cookbook
 
 Essa seção inclui a implementação de várias operações
 comuns em TensorFlow
 
-##Verificar Dimensão
+## Verificar Dimensão
 
 ```{.python .input}
 def get_shape(tensor):
@@ -1928,7 +1928,7 @@ def get_shape(tensor):
   return dims
 ```
 
-##Obter _Batch_
+## Obter _Batch_
 
 ```{.python .input}
 def batch_gather(tensor, indices):
@@ -1952,7 +1952,7 @@ def batch_gather(tensor, indices):
   return output
 ```
 
-##Beam Search
+## Beam Search
 
 ```{.python .input}
 import tensorflow as tf
@@ -2016,7 +2016,7 @@ def rnn_beam_search(update_fn, initial_state, sequence_length, beam_width,
   return sel_ids, sel_sum_logprobs
 ```
 
-##Combinar - Merge
+## Combinar - Merge
 
 ```{.python .input}
 import tensorflow as tf
@@ -2057,7 +2057,7 @@ def merge(tensors, units, activation=tf.nn.relu, name=None, **kwargs):
   return result
 ```
 
-##Entropia
+## Entropia
 
 ```{.python .input}
 import tensorflow as tf
@@ -2092,7 +2092,7 @@ def gaussian_kl(q, p=(0., 0.)):
            1), axis=-1)
 ```
 
-##Paralelizar
+## Paralelizar
 
 ```{.python .input}
 def make_parallel(fn, num_gpus, **kwargs):
@@ -2120,7 +2120,7 @@ def make_parallel(fn, num_gpus, **kwargs):
   return tf.concat(out_split, axis=0)
 ```
 
-##ReLU simples
+## ReLU simples
 
 ```{.python .input}
 def leaky_relu(tensor, alpha=0.1):
@@ -2128,7 +2128,7 @@ def leaky_relu(tensor, alpha=0.1):
     return tf.maximum(tensor, alpha * tensor)
 ```
 
-##Normalização de _Batch_
+## Normalização de _Batch_
 
 ```{.python .input}
 def batch_normalization(tensor, training=False, epsilon=0.001, momentum=0.9, 
